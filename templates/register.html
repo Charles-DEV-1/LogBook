@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Register - LogMaster{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <div class="card p-4">
+      <h3 class="text-center mb-4">📝 Create Account</h3>
+      <form method="POST" enctype="multipart/form-data">
+        <div class="row">
+            
+            <div class="col-md-6 mb-3">
+            <label>Name:</label>
+            <input type="text" name="name" class="form-control" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label>Username:</label>
+            <input type="text" name="username" class="form-control" required>
+          </div>
+          <div class=" mb-3">
+            <label>Email:</label>
+            <input type="email" name="email" class="form-control" required>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label>Password:</label>
+          <input type="password" name="password" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label>Confirm Password:</label>
+          <input type="password" name="confirm_pass" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label>Role:</label>
+          <select name="role" class="form-select" required>
+            <option value="student">Student</option>
+            <option value="supervisor">Supervisor</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label>Supervisor (if Student):</label>
+          <select name="supervisor_id" class="form-select">
+           <option value="">-- Select Supervisor --</option>
+            {% for supervisor in supervisors %}
+              <option value="{{ supervisor.id }}">{{ supervisor.username }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="mb-3">
+          <label>Profile Picture:</label>
+          <input type="file" name="profile_pic" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-custom w-100">Register</button>
+      </form>
+      <p class="text-center mt-3">Already have an account?  
+        <a href="{{ url_for('login') }}" class="text-info">Login</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

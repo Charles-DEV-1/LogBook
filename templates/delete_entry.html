@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Delete Log Entry{% endblock %}
+{% block content %}
+
+<!-- Profile Section aligned right -->
+<div class="d-flex justify-content-end mt-3 mb-4">
+  <div class="profile-pic-wrapper-small">
+    <img src="{{ url_for('static', filename='uploads/' ~ (user.profile_pic if user.profile_pic else 'default.png')) }}" 
+         alt="Profile Picture" class="profile-pic-small">
+  </div>
+</div>
+
+<h2 class="mb-4 text-danger">⚠️ Confirm Delete</h2>
+<p class="text-white">Are you sure you want to delete this log entry?</p>
+
+<div class="card p-3 text-white shadow-lg glass-card mb-4">
+  <h5>{{ log.task_description }}</h5>
+  <p><strong>Date:</strong> {{ log.created_at.strftime("%Y-%m-%d") }}</p>
+  <p><strong>Hours:</strong> {{ log.hours or "—" }}</p>
+  <p><strong>Challenges:</strong> {{ log.challenges or "—" }}</p>
+  <p><strong>Lessons:</strong> {{ log.lessons or "—" }}</p>
+  <p><strong>Activities:</strong> {{ log.activities or "—" }}</p>
+
+  {% if log.attachments %}
+    <p><b>Attachments:</b></p>
+    <ul>
+      {% for att in log.attachments %}
+        <li><a href="{{ url_for('upload', filename=att.filename) }}" target="_blank">{{ att.filename }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+
+<form method="POST" action="{{ url_for('delete_entry', id=log.id) }}">
+  <div class="d-flex gap-2">
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </div>
+</form>
+
+<style>
+  /* Small Profile Pic Styling (top-right) */
+  .profile-pic-wrapper-small {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .profile-pic-small {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+  }
+
+  /* Card Styling */
+  .glass-card {
+    background: rgba(220, 53, 69, 0.1); /* red tint for warning */
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+  }
+</style>
+
+{% endblock %}

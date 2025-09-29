@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block title %}Welcome - LogMaster{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container text-center">
+    <h1 class="hero-title">Welcome to <span>LogMaster</span></h1>
+    <p class="hero-subtitle">The smarter digital logbook for Students & Supervisors 🚀</p>
+    <div class="mt-4">
+      <a href="{{ url_for('register') }}" class="btn btn-light btn-lg me-3">✨ Get Started</a>
+      <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg">Login</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features py-5">
+  <div class="container text-center">
+    <h2 class="section-title">Why Choose LogMaster?</h2>
+    <div class="row mt-4 g-4">
+      <div class="col-md-4">
+        <div class="glass-card">
+          <div class="icon">📖</div>
+          <h3>Easy Log Tracking</h3>
+          <p>Students record activities & lessons with a simple, clean interface.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card">
+          <div class="icon">👨‍🏫</div>
+          <h3>Supervisor Oversight</h3>
+          <p>Supervisors review, comment, and monitor progress seamlessly.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card">
+          <div class="icon">📊</div>
+          <h3>Reports & Analytics</h3>
+          <p>Track productivity with weekly and monthly reports.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta text-center">
+  <div class="container">
+    <h2>Ready to Get Started?</h2>
+    <p>Create your account today and start logging smarter.</p>
+    <a href="{{ url_for('register') }}" class="btn btn-lg btn-light">Create Account Now</a>
+  </div>
+</section>
+
+<!-- Footer -->
+
+
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #001f3f, #003366, #00509e, #007bff);
+    background-attachment: fixed;
+    color: #f5f6fa;
+  }
+
+  .hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+  }
+  .hero-title span {
+    color: #00c6ff;
+  }
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    opacity: 0.9;
+  }
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease;
+    color: #fff;
+  }
+  .glass-card:hover {
+    transform: translateY(-8px);
+  }
+  .glass-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .cta {
+    padding: 80px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    margin: 60px auto;
+    max-width: 800px;
+  }
+
+  .footer {
+    padding: 30px 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #aaa;
+  }
+  .footer a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .footer a:hover {
+    color: #00c6ff;
+  }
+</style>
+
+{% endblock %}

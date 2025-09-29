@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Edit Entry{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <div class="card p-4">
+      <h3 class="text-center mb-4">✏️ Edit Entry</h3>
+      <form method="POST">
+        <div class="mb-3">
+          
+          <label>Task Description:</label>
+          <textarea name="task_description" class="form-control" required>{{ entry.task_description }}</textarea>
+        </div>
+        <div class="mb-3">
+          <label>Challenges:</label>
+          <textarea name="challenges" class="form-control" required>{{ entry.challenges }}</textarea>
+        </div>
+        <div class="mb-3">
+          <label>Hours Spent:</label>
+          <input type="text" class="form-control" required name="hours" value="{{entry.hours}}">
+        </div>
+        <div class="mb-3">
+          <label>Lessons Learned:</label>
+          <textarea name="lessons" class="form-control" required>{{ entry.lessons }}</textarea>
+        </div>
+        <div class="mb-3">
+          <label>Activities Done:</label>
+          <textarea name="activities" class="form-control" required>{{ entry.lessons }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-custom w-100">Update Entry</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

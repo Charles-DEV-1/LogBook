@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}New Entry{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <div class="card p-4">
+      <h3 class="text-center mb-4">✍️ New Log Entry</h3>
+      <form method="POST" enctype="multipart/form-data" multiple>
+        <div class="mb-3">
+          <label>Task Description</label>
+          <textarea name="task_description" class="form-control" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label>Challenges</label>
+          <textarea name="challenges" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+          <label>Hours</label>
+          <input type="text" name="hours" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label>Activities</label>
+          <textarea name="activities" class="form-control"></textarea>
+        </div>
+        <label>Attachments</label>
+            <input type="file" name="attachments" multiple>
+        
+        <div class="mb-3">
+          <label>Lessons Learned</label>
+          <textarea name="lessons" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-custom w-100">Save Entry</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
